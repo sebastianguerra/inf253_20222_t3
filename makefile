@@ -95,4 +95,4 @@ run: $(MAIN).class
 #
 
 clean:
-	$(RM) *.class
+	$(RM) $(CLASSES:.java=.class)
