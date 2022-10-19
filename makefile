@@ -55,7 +55,17 @@ FILE=
 CLASSES = \
 	JavaQuest.java \
 	GraphGenerator/GraphGenerator.java \
-	GraphGenerator/Edge.java
+	GraphGenerator/Edge.java \
+	Code/Mapa.java \
+	Code/Personaje.java \
+	Code/Jugador.java \
+	Code/Item.java \
+	Code/Nodos/Nodo.java \
+	Code/Nodos/NodoCombate.java \
+	Code/Nodos/NodoEvento.java \
+	Code/Nodos/NodoInicial.java \
+	Code/Nodos/NodoJefeFinal.java \
+	Code/Nodos/NodoTienda.java
 
 #
 # MAIN is a variable with the name of the file containing the main method
