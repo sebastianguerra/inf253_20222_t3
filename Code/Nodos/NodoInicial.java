@@ -9,6 +9,6 @@ public class NodoInicial extends Nodo {
 
     public void interactuar(Jugador jugador){
         /* Le muestra al usuario una introduccion al juego (Instrucciones y pueden incluir una historia). */
-        // TODO
+        System.out.println("Bienvenido al juego de aventura");
     }
 }

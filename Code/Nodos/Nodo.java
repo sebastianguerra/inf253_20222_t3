@@ -14,7 +14,7 @@ public abstract class Nodo {
         this.siguientes_nodos = new ArrayList<Nodo>();
     }
 
-    abstract void interactuar(Jugador jugador);
+    public abstract void interactuar(Jugador jugador);
 
     public void agregarNodo(Nodo nodo){
         siguientes_nodos.add(nodo);
