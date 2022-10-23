@@ -8,7 +8,15 @@ public class Personaje {
     private Integer danio; // Cantidad de vida que le resta a su oponente al combatir (antes de aplicar defensa).
     private Integer defensa; // Cantidad de danio evitado por golpe al combatir.
 
-    public Personaje(){} // TODO
+    public Personaje(String nombre, Integer dinero, Integer hp_actual, Integer hp_total, Integer danio, Integer defensa) {
+        this.nombre = nombre;
+        this.dinero = dinero;
+        this.hp_actual = hp_actual;
+        this.hp_total = hp_total;
+        this.danio = danio;
+        this.defensa = defensa;
+    }
+
 
     public void combate(Personaje enemigo) {
         /* Realiza el combate entre dos personajes. Durante un combate se selecciona un personaje aleatoriamente para comenzar y posteriormente se alternan al atacar. Durante un ataque, el personaje defensor pierde vida equivalente al danio de su oponente menos la defensa del defensor. El combate termina un vez la hp_actual de uno de los personajes sea menor o igual a 0. */
