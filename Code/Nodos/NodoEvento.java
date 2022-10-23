@@ -10,6 +10,10 @@ public class NodoEvento extends Nodo {
     private Item resultado1; // Item que el jugador puede obtener si toma la primera opcion.
     private Item resultado2; // Item que el jugador puede obtener si toma la segunda opcion.
 
+    public NodoEvento(int id) {
+        super(id);
+    }
+
     public void interactuar(Jugador jugador){
         /* Le muestra al usuario la descripcion del evento y las aalternativas que puede seleccionar (No se muestran explicitamente las recompensas asociadas a cada alternativa). Cuando el usuario selecciona una alternativa se le aplica la recompensa correspondiente */
         // TODO

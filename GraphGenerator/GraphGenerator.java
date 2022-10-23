@@ -5,7 +5,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class GraphGenerator {
-    public static SortedSet<Edge> Generar(Integer N, Integer seed) {
+    public static SortedSet<Edge> Generar(Integer N, long seed) {
         Random rand = new Random(seed);
 
         Integer[][] grid = new Integer[N][4];

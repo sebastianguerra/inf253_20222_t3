@@ -6,6 +6,10 @@ import Code.Jugador;
 public class NodoTienda extends Nodo {
     private Item[] inventario; // Lista de items disponibles para comprar.
 
+    public NodoTienda(int id) {
+        super(id);
+    }
+
     public void comprar(Integer pos){
         /* Le aplica el item en la posicion indicada al jugador. */
         // TODO
