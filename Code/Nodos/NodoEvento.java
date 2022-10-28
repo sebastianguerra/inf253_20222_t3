@@ -5,8 +5,8 @@ import Code.Jugador;
 
 public class NodoEvento extends Nodo {
     private String descripcion; // Pequenia historia que describe un encuentro del jugador en su aventura.
-    private String alterntiva1; // Dos opciones que puede tomar en el encuentro descrito
-    private String alterntiva2; // Dos opciones que puede tomar en el encuentro descrito
+    private String alternativa1; // Dos opciones que puede tomar en el encuentro descrito
+    private String alternativa2; // Dos opciones que puede tomar en el encuentro descrito
     private Item resultado1; // Item que el jugador puede obtener si toma la primera opcion.
     private Item resultado2; // Item que el jugador puede obtener si toma la segunda opcion.
 
