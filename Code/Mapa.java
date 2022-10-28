@@ -1,6 +1,8 @@
 package Code;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
 import java.util.SortedSet;
@@ -14,31 +16,12 @@ public class Mapa {
     private Integer profundidad; // Cantidad de "pisos" que tiene el mapa (no incluye el nodo inicial ni el nodo del jefe final).
     private NodoInicial nodo_inicial; // Nodo inicial del mapa.
     private Nodo nodo_actual; // Nodo en el que se encuentra el jugador.
+    private Integer nNodos;
 
 
     private Random rand;
 
-    private static final String[][][] conexiones = {
-        {{""}, {""}, {""}, {""}},
-        {
-            {""},
-            {"  ║  "},
-            {"╔═╩═╗"},
-            {"╔═╬═╗"}
-        },
-        {
-            {""},
-            {"╚═╦═╝"},
-            {"║   ║","╠═╗ ║\n║ ╚═╣", "║ ╔═╣\n╠═╝ ║"},
-            {"╠═╗ ║", "║ ╔═╣", "╠═╦╗║\n║ ║╚╣", "║╔╦═╣\n╠╝║ ║", "╠╗ ╔╣\n║╚╦╝║"}
-        },
-        {
-            {""},
-            {"╚═╬═╝"},
-            {"╠═╝ ║", "║ ╚═╣", "║ ║╔╣\n╠═╩╝║", "╠╗║ ║\n║╚╩═╣", "║╔╩╗║\n╠╝ ╚╣"},
-            {"║ ║ ║", "║╔╣ ║\n╠╝║ ║", "║ ║╔╣\n║ ╠╝║", "╠╗║ ║\n║╚╣ ║", "║╔╝╔╣\n╠╝╔╝║", "╠╗╚╗║\n║╚╗╚╣"}
-        }
-    };
+    private static final HashMap <List<Integer>, String> conexiones = new HashMap<List<Integer>, String>();
 
     public Mapa(int profundidad, long seed) {
         SortedSet<Edge> edges = GraphGenerator.Generar(profundidad, seed);
@@ -70,26 +53,76 @@ public class Mapa {
             }
         }
         nodos.add(new NodoJefeFinal(nodos.size()));
+        nNodos = nodos.size();
 
 
         for(Edge e : edges){
             nodos.get(e.x).agregarNodo(nodos.get(e.y));
         }
 
+
+
+
+        // 1 -> 1
+        conexiones.put(Arrays.asList(new Integer[]{1, 1}), "  ║  ");
+        // 1 -> 2
+        conexiones.put(Arrays.asList(new Integer[]{2, 1, 1}), "╔═╩═╗");
+        // 1 -> 3
+        conexiones.put(Arrays.asList(new Integer[]{3, 1, 1, 1}), "╔═╬═╗");
+
+        // 2 -> 1
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 2}), "╚═╦═╝");
+        // 2 -> 2
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 1, 1}), "║   ║");
+        conexiones.put(Arrays.asList(new Integer[]{2, 1, 1, 2}), "╠═╗ ║\n║ ╚═╣");
+        conexiones.put(Arrays.asList(new Integer[]{1, 2, 2, 1}), "║ ╔═╣\n╠═╝ ║");
+        // 2 -> 3
+        conexiones.put(Arrays.asList(new Integer[]{2, 1, 1, 1, 1}), "╠═╗ ║");
+        conexiones.put(Arrays.asList(new Integer[]{1, 2, 1, 1, 1}), "║ ╔═╣");
+        conexiones.put(Arrays.asList(new Integer[]{3, 1, 1, 1, 2}), "╠═╦╗║\n║ ║╚╣");
+        conexiones.put(Arrays.asList(new Integer[]{1, 3, 2, 1, 1}), "║╔╦═╣\n╠╝║ ║");
+        conexiones.put(Arrays.asList(new Integer[]{2, 2, 1, 2, 1}), "╠╗ ╔╣\n║╚╦╝║");
+
+        // 3 -> 1
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 1, 3}), "╚═╬═╝");
+        // 3 -> 2
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 1, 2, 1}), "╠═╝ ║");
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 1, 1, 2}), "║ ╚═╣");
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 2, 3, 1}), "║ ║╔╣\n╠═╩╝║");
+        conexiones.put(Arrays.asList(new Integer[]{2, 1, 1, 1, 3}), "╠╗║ ║\n║╚╩═╣");
+        conexiones.put(Arrays.asList(new Integer[]{1, 2, 1, 2, 2}), "║╔╩╗║\n╠╝ ╚╣");
+        // 3 -> 3
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 1, 1, 1, 1}), "║ ║ ║");
+        conexiones.put(Arrays.asList(new Integer[]{1, 2, 1, 2, 1, 1}), "║╔╣ ║\n╠╝║ ║");
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 2, 1, 2, 1}), "║ ║╔╣\n║ ╠╝║");
+        conexiones.put(Arrays.asList(new Integer[]{2, 1, 1, 1, 2, 1}), "╠╗║ ║\n║╚╣ ║");
+        conexiones.put(Arrays.asList(new Integer[]{1, 2, 1, 1, 1, 2}), "║ ╠╗║\n║ ║╚╣");
+        conexiones.put(Arrays.asList(new Integer[]{1, 1, 2, 2, 1, 1}), "║╔╝╔╣\n╠╝╔╝║");
+        conexiones.put(Arrays.asList(new Integer[]{2, 1, 1, 1, 1, 2}), "╠╗╚╗║\n║╚╗╚╣");
+
     }
 
 
 
     public void verMapa() {
+        System.out.println("Mapa:");
+
         SortedSet<Nodo> capa;
 
-        System.out.println("Mapa:");
+        // cantidadConexiones: array que almacena las conexiones de cada nodo en una capa.
+        List<Integer> cantidadConexiones = new ArrayList<Integer>(nNodos);
+        for(int i = 0; i < nNodos; i++){
+            cantidadConexiones.add(0);
+        }
+        cantidadConexiones.set(this.nodo_actual.getId(), this.nodo_actual.getSiguientesNodos().size());
+
         List<Nodo> capaActual = new ArrayList<>();
         capaActual.add(this.nodo_actual);
 
         List<Nodo> capaSiguiente = new ArrayList<>();
         for(Nodo n : this.nodo_actual.getSiguientesNodos()){
             capaSiguiente.add(n);
+            cantidadConexiones.set(n.getId(), cantidadConexiones.get(n.getId()) + 1);
         }
 
         while(capaActual.size() > 0){
@@ -101,26 +134,40 @@ public class Mapa {
             } else {
                 System.out.println(capaActual.get(0).getClass().getSimpleName().charAt(4) + " " + capaActual.get(1).getClass().getSimpleName().charAt(4) + " " + capaActual.get(2).getClass().getSimpleName().charAt(4));
             }
-
-            // for (Nodo n: capaSiguiente) {
-            //     System.out.print(n.getId() + "   ");
-            // }System.out.println("");
+            if (capaSiguiente.size() == 0) break;
 
 
-            System.out.println(
-                conexiones
-                    [capaActual.size()]
-                    [capaSiguiente.size()]
-                    [rand.nextInt(
-                        conexiones[capaActual.size()][capaSiguiente.size()].length)]);
+            int actualSize = capaActual.size();
+            int siguienteSize = capaSiguiente.size();
+
+            List<Integer> conexionesActuales = new ArrayList<Integer>(actualSize + siguienteSize);
+            for(int i = 0; i < actualSize + siguienteSize; i++){
+                conexionesActuales.add(0);
+            }
+            int j = 0;
+            for (int i : cantidadConexiones) {
+                if (i != 0){
+                    conexionesActuales.set(j, i);
+                    j++;
+                }
+            }
+            // System.out.println(conexionesActuales);
+            String conexion = conexiones.get(conexionesActuales);
+
+            System.out.println(conexion);
 
             capaActual = capaSiguiente;
             capaSiguiente = new ArrayList<>();
+            for(int i = 0; i < nNodos; i++){
+                cantidadConexiones.set(i, 0);
+            }
 
             capa = new TreeSet<Nodo>();
             for(Nodo n : capaActual){
                 for(Nodo s : n.getSiguientesNodos()){
                     capa.add(s);
+                    cantidadConexiones.set(s.getId(), cantidadConexiones.get(s.getId()) + 1);
+                    cantidadConexiones.set(n.getId(), cantidadConexiones.get(n.getId()) + 1);
                 }
             }
             for (Nodo n : capa) {
