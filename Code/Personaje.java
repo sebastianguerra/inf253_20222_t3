@@ -1,5 +1,7 @@
 package Code;
 
+import java.util.Random;
+
 public class Personaje {
     private String nombre; // Nombre del personaje.
     private Integer dinero; // Cuanto dinero tiene el personaje.
@@ -8,13 +10,17 @@ public class Personaje {
     private Integer danio; // Cantidad de vida que le resta a su oponente al combatir (antes de aplicar defensa).
     private Integer defensa; // Cantidad de danio evitado por golpe al combatir.
 
-    public Personaje(String nombre, Integer dinero, Integer hp_actual, Integer hp_total, Integer danio, Integer defensa) {
+    private Random rand;
+
+    public Personaje(Random random, String nombre, Integer dinero, Integer hp_actual, Integer hp_total, Integer danio, Integer defensa) {
         this.nombre = nombre;
         this.dinero = dinero;
         this.hp_actual = hp_actual;
         this.hp_total = hp_total;
         this.danio = danio;
         this.defensa = defensa;
+
+        this.rand = random;
     }
 
 

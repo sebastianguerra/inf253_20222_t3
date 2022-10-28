@@ -7,17 +7,19 @@ import java.util.Random;
 import Code.Jugador;
 
 public class NodoCombate extends Nodo {
+    private Random rand;
     private Personaje enemigo; // Enemigo al cual se debe enfrentar el jugador.
 
-    public NodoCombate(int id, long seed) {
+    public NodoCombate(int id, Random random) {
         super(id);
-        Random rand = new Random(seed);
+        this.rand = random;
 
         int hp = rand.nextInt(10) + 10;
         int danio = rand.nextInt(5) + 1;
         int defensa = rand.nextInt(5) + 1;
 
         this.enemigo = new Personaje(
+            rand,
             "Enemigo", 
             0, 
             hp, 

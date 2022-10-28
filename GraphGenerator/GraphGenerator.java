@@ -5,9 +5,7 @@ import java.util.SortedSet;
 import java.util.TreeSet;
 
 public class GraphGenerator {
-    public static SortedSet<Edge> Generar(Integer N, long seed) {
-        Random rand = new Random(seed);
-
+    public static SortedSet<Edge> Generar(Integer N, Random rand) {
         Integer[][] grid = new Integer[N][4];
         Integer id = 1;
         for (int row = 0; row < N; row++) {
@@ -51,6 +49,6 @@ public class GraphGenerator {
     }
 
     public static SortedSet<Edge> Generar(Integer N) {
-        return GraphGenerator.Generar(N, 42);
+        return GraphGenerator.Generar(N, new Random(42));
     }
 }

@@ -23,14 +23,14 @@ public class Mapa {
 
     private static final HashMap <List<Integer>, String> conexiones = new HashMap<List<Integer>, String>();
 
-    public Mapa(int profundidad, long seed) {
-        SortedSet<Edge> edges = GraphGenerator.Generar(profundidad, seed);
+    public Mapa(int profundidad, Random random) {
+        this.rand = random;
+        SortedSet<Edge> edges = GraphGenerator.Generar(profundidad, rand);
 
         for(Edge edge : edges) {
             System.out.printf("(%d) -> (%d)\n", edge.x, edge.y);
         }
 
-        rand = new Random(seed);
         this.profundidad = profundidad;
         this.nodo_actual = this.nodo_inicial = new NodoInicial(0);
 
@@ -46,7 +46,7 @@ public class Mapa {
                 } else if (r < 40) {
                     n = new NodoTienda(e.x);
                 } else {
-                    n = new NodoCombate(e.x, seed);
+                    n = new NodoCombate(e.x, rand);
                 }
 
                 nodos.add(n);

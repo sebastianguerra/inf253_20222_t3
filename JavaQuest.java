@@ -14,7 +14,7 @@ public class JavaQuest {
     public static void main(String[] args) {
         System.out.printf("Seed: %d\n", seed);
 
-        final Mapa mapa = new Mapa(profundidad, seed);
+        final Mapa mapa = new Mapa(profundidad, rand);
         mapa.verMapa();
 
 
