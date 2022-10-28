@@ -29,6 +29,6 @@ public class NodoCombate extends Nodo {
 
     public void interactuar(Jugador jugador){
         /* Realiza el combate informandole al usuaio los resultados de cada ataque realizado y determina al ganador. */
-        // TODO
+        jugador.combate(enemigo);
     }
 }
