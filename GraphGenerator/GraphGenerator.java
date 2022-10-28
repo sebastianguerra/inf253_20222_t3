@@ -18,8 +18,19 @@ public class GraphGenerator {
                     grid[row][col] = id;
                 }
                 curr += blockSize;
+                if ( curr == 3 && grid[row][2] - grid[row][0] == 2) {
+                    grid[row][3] = grid[row][2];
+                    curr++;
+                }
                 id++;
             }
+        }
+
+        for(int i = 0 ; i < N; i++) {
+            for(int j = 0; j < 4; j++) {
+                System.out.printf("%d ", grid[i][j]);
+            }
+            System.out.println();
         }
 
         SortedSet<Edge> edges = new TreeSet<Edge>();
