@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
+import java.util.Scanner;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -178,17 +179,29 @@ public class Mapa {
         
     }
 
-    public void avanzar() {
+    public void avanzar(Scanner sc, Jugador jugador) {
         /* Le muestra al usuario los nodos a los que puede avanzar, le pide seleccionar uno y hace al jugador interactuar con ese nodo. */
         // TODO
 
-        // 1.- Mostrar lista nodos siguientes
-        System.out.println("Nodos siguientes:");
-        for (Nodo n : nodo_actual.getSiguientesNodos()) {
-            System.out.printf("\t(%d) %s\n", n.getId(), n.getClass().getSimpleName());
-            System.out.println(n);
+        int nSiguientesNodos = nodo_actual.getSiguientesNodos().size();
+        if (nSiguientesNodos > 1) {
+            System.out.println("Nodos siguientes:");
+            int i = 0;
+            for (Nodo n : nodo_actual.getSiguientesNodos()) {
+                System.out.printf("\t(%d) %s\n", i++, n.getClass().getSimpleName());
+            }
+            System.out.println("Elige un nodo para avanzar:");
+            int eleccion = sc.nextInt();
+    
+            nodo_actual = nodo_actual.getSiguientesNodos().get(eleccion);
+        } else if( nSiguientesNodos == 1 ) {
+            nodo_actual = nodo_actual.getSiguientesNodos().get(0);
+        } else {
+            return;
         }
-        // 2.- Interactuar con nodo elegido y actualizar nodoactual
+
+        nodo_actual.interactuar(jugador);
+
         
 
 

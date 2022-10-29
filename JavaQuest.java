@@ -19,18 +19,20 @@ public class JavaQuest {
 
 
         // Solicita un nombre para el jugador y lo crea.
-        // System.out.println("Ingresa un nombre: ");
-        // final String nombre = sc.nextLine();
-        // final Jugador jugador = new Jugador(nombre);
+        System.out.println("Ingresa un nombre: ");
+        final String nombre = sc.nextLine();
+        final Jugador jugador = new Jugador(nombre, rand);
 
 
         // Inicia el juego.
-        // iniciarJuego(mapa, jugador);
+        iniciarJuego(mapa, jugador);
     }
     
     private static void iniciarJuego(Mapa mapa, Jugador jugador) {
-        mapa.avanzar();
-
+        while(true) {
+            mapa.avanzar(sc, jugador);
+            mapa.verMapa();
+        }
     }
 
 }
