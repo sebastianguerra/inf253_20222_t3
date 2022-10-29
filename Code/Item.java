@@ -28,4 +28,8 @@ public class Item {
     public Integer getPrecio() {
         return this.precio;
     }
+
+    public String getName() {
+        return "asdf";
+    }
 }

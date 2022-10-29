@@ -24,13 +24,6 @@ public class GraphGenerator {
             }
         }
 
-        for(int i = 0 ; i < N; i++) {
-            for(int j = 0; j < 4; j++) {
-                System.out.printf("%d ", grid[i][j]);
-            }
-            System.out.println();
-        }
-
         SortedSet<Edge> edges = new TreeSet<Edge>();
         for (int row = 0; row < N - 1; row++) {
             for (int col = 0; col < 4; col++) {
