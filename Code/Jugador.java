@@ -20,4 +20,14 @@ public class Jugador extends Personaje {
         /* Muestra al usuario los items que a adquirido. */
         // TODO
     }
+
+    public void aplicarItem(Item item) {
+        items_aplicados.add(item);
+        this.danio += item.getAumentoDanio();
+        this.hp_total += item.getAumentoHPTotal();
+        this.hp_actual += item.getAumentoHP();
+        this.hp_actual = Math.min(this.hp_actual, this.hp_total);
+        this.defensa += item.getAumentoDefensa();
+
+    }
 }
