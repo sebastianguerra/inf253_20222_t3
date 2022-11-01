@@ -14,8 +14,10 @@ import GraphGenerator.Edge;
 import GraphGenerator.GraphGenerator;
 
 public class Mapa {
+    private Integer profundidad;
     private NodoInicial nodo_inicial; // Nodo inicial del mapa.
     private Nodo nodo_actual; // Nodo en el que se encuentra el jugador.
+    
     private Integer nNodos;
     private Boolean isInFinalNode = false;
 
@@ -26,6 +28,7 @@ public class Mapa {
     private static final HashMap <List<Integer>, String> conexiones = new HashMap<List<Integer>, String>();
 
     public Mapa(int profundidad, Random random, Scanner scanner) {
+        this.profundidad = profundidad;
         this.rand = random;
         this.sc = scanner;
 

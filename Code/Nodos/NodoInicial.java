@@ -23,9 +23,7 @@ public class NodoInicial extends Nodo {
         /* Le muestra al usuario una introduccion al juego (Instrucciones y pueden incluir una historia). */
         int time = 800;
         System.out.println("Bienvenido al juego JavaQuest!");
-        wait(time);
         System.out.println("Por favor, ingresa tu nombre:");
-        wait(time);
         jugador.setNombre(sc.nextLine());
         wait(time);
         System.out.println("Hola " + jugador.getNombre() + "!");

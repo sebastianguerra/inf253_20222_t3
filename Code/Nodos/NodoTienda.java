@@ -14,17 +14,20 @@ public class NodoTienda extends Nodo {
     public NodoTienda(int id, Random random, Scanner scanner) {
         super(id, random, scanner);
         this.inventario = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        final int cantidadItems = random.nextInt(4) + 5; // Cantidad de items que tendra la tienda.
+        for (int i = 0; i < cantidadItems; i++) {
             inventario.add(Item.generarItemAleatorio(random));
         }
     }
 
     public void comprar(Integer pos, Jugador jugador){
+        // TODO poder comprar mas que un item
         /* Le aplica el item en la posicion indicada al jugador. */
         jugador.aplicarItem(inventario.get(pos));
         jugador.cobrar(inventario.get(pos).getPrecio());
     }
     public void interactuar(Jugador jugador) {
+        // TODO poder comprar mas que un item
         /* Le muestra los items en el inventario de la tienda al usuario y cuanto dinero tiene a su disposicion. Le permite comprar tantos items como quiera. */
         System.out.println("Bienvenido a la tienda!");
         // System.out.println("Tienes "+jugador.getDinero()+" dinero.");
