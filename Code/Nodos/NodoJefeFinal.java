@@ -12,6 +12,20 @@ public class NodoJefeFinal extends Nodo {
 
     public NodoJefeFinal(int id, Random random, Scanner scanner) {
         super(id, random, scanner);
+
+        int hp = rand.nextInt(20) + 20;
+        int danio = rand.nextInt(10) + 5;
+        int defensa = rand.nextInt(10) + 5;
+
+        this.jefe = new Personaje(
+            rand,
+            "Jefe", 
+            0, 
+            hp, 
+            hp, 
+            danio, 
+            defensa
+            );
     }
 
     public void interactuar(Jugador jugador){

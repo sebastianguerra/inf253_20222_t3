@@ -194,11 +194,11 @@ public class Mapa {
             nodo_actual = nodo_actual.getSiguientesNodos().get(eleccion);
         } else if( nSiguientesNodos == 1 ) {
             nodo_actual = nodo_actual.getSiguientesNodos().get(0);
-        } else {
-            isInFinalNode = true;
-            return;
         }
 
+        if (nodo_actual instanceof NodoJefeFinal) {
+            this.isInFinalNode = true;
+        }
         nodo_actual.interactuar(jugador);
 
         

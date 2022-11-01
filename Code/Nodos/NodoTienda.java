@@ -27,7 +27,8 @@ public class NodoTienda extends Nodo {
     public void interactuar(Jugador jugador) {
         /* Le muestra los items en el inventario de la tienda al usuario y cuanto dinero tiene a su disposicion. Le permite comprar tantos items como quiera. */
         System.out.println("Bienvenido a la tienda!");
-        System.out.println("Tienes "+jugador.getDinero()+" dinero.");
+        // System.out.println("Tienes "+jugador.getDinero()+" dinero.");
+        jugador.verEstado();
         System.out.println("Inventario:");
         System.out.println("-----------------------------------");
         for (int i = 0; i < inventario.size(); i++) {

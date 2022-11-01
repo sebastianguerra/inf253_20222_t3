@@ -28,13 +28,15 @@ public class Personaje {
         /* Realiza el combate entre dos personajes. Durante un combate se selecciona un personaje aleatoriamente para comenzar y posteriormente se alternan al atacar. Durante un ataque, el personaje defensor pierde vida equivalente al danio de su oponente menos la defensa del defensor. El combate termina un vez la hp_actual de uno de los personajes sea menor o igual a 0. */
         Boolean turnoEnemigo = rand.nextBoolean();
 
+        int i = 0;
         while (enemigo.stillAlive() && this.stillAlive()) {
             if (turnoEnemigo)
-                this.recibirAtaque(enemigo.getDanio());
+                this.recibirAtaque(enemigo.getDanio() + i/100);
             else
-                enemigo.recibirAtaque(this.getDanio());
+                enemigo.recibirAtaque(this.getDanio() + i/100);
             
             turnoEnemigo = !turnoEnemigo;
+            i++;
         }
 
         if (this.stillAlive())
@@ -44,8 +46,9 @@ public class Personaje {
     }
 
     public void recibirAtaque(int danio) {
-        this.hp_actual -= danio - this.defensa;
-        System.out.println(this.nombre + " recibio " + (danio-this.defensa) + " de danio. HP actual:" + this.hp_actual);
+        int danioRecibido = Math.max(danio - this.defensa, 0);
+        this.hp_actual -= danioRecibido;
+        System.out.println(this.nombre + " recibio " + danioRecibido + " de danio. HP actual:" + this.hp_actual);
     }
 
     public boolean stillAlive(){

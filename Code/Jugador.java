@@ -22,7 +22,17 @@ public class Jugador extends Personaje {
     }
     public void verItems(){
         /* Muestra al usuario los items que a adquirido. */
-        // TODO
+        if (items_aplicados.size() == 0) {
+            System.out.println("No tienes items.");
+        } else {
+            System.out.println("Items:");
+            System.out.println("-----------------------------------");
+            for (int i = 0; i < items_aplicados.size(); i++) {
+                System.out.printf("%d:\n", i+1);
+                items_aplicados.get(i).showInfo();
+                System.out.println("-----------------------------------");
+            }
+        }
     }
 
     public void aplicarItem(Item item) {

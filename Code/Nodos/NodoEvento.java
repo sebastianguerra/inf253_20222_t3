@@ -15,6 +15,11 @@ public class NodoEvento extends Nodo {
 
     public NodoEvento(int id, Random random, Scanner scanner) {
         super(id, random, scanner);
+        this.descripcion = "Encontraste dos cofres pero solo puedes abrir uno. Que haces?";
+        this.alternativa1 = "Abres el cofre de la izquierda.";
+        this.alternativa2 = "Abres el cofre de la derecha.";
+        this.resultado1 = Item.generarItemAleatorio(random);
+        this.resultado2 = Item.generarItemAleatorio(random);
     }
 
     public void interactuar(Jugador jugador){

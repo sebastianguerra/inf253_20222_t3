@@ -46,6 +46,11 @@ public class JavaQuest {
                 System.out.println("Opcion invalida");
             }
         }
+        if (jugador.stillAlive()) {
+            System.out.println("Has ganado!");
+        } else {
+            System.out.println("Has perdido!");
+        }
     }
 
 }
