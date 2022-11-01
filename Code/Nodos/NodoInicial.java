@@ -17,5 +17,11 @@ public class NodoInicial extends Nodo {
         jugador.setNombre(sc.nextLine());
         System.out.println("Hola " + jugador.getNombre() + "!");
         System.out.println("Tu objetivo es avanzar por el mapa hasta llegar al jefe final y derrotarlo.");
+        System.out.println("El mapa se compone de 3 tipos de nodos sin contar el actual y el del jefe final: Tienda, Combate y Evento");
+        System.out.println("En las tiendas puedes comprar items para mejorar tu personaje.");
+        System.out.println("En los nodos Combate debes enfrentarte a enemigos.");
+        System.out.println("En los nodos Evento puedes encontrar items.");
+        System.out.println("");
+        System.out.println("Cada vez que interactues con un nodo podras elegir 4 opciones:");
     }
 }

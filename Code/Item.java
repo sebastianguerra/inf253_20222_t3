@@ -1,5 +1,7 @@
 package Code;
 
+import java.util.Random;
+
 public class Item {
     private Integer precio; // Corresponde a cuanto dinero cuesta adquirir un item desde la tienda.
     private Integer recuperar_hp; // Cantidad de hp que recupera al jugador.
@@ -29,7 +31,23 @@ public class Item {
         return this.precio;
     }
 
-    public String getName() {
-        return "asdf";
+    public void showInfo() {
+        /* Muestra al usuario la informacion del item. */
+        System.out.println("Precio: " + this.precio);
+        System.out.println("Recuperar HP: " + this.recuperar_hp);
+        System.out.println("Aumentar HP Total: " + this.aumentar_hp_total);
+        System.out.println("Aumentar Danio: " + this.aumentar_danio);
+        System.out.println("Aumentar Defensa: " + this.aumentar_defensa);
+    }
+
+    public static Item generarItemAleatorio(Random random) {
+        /* Genera un item aleatorio. */
+        Item item = new Item();
+        item.precio = random.nextInt(100);
+        item.recuperar_hp = random.nextInt(100);
+        item.aumentar_hp_total = random.nextInt(100);
+        item.aumentar_danio = random.nextInt(100);
+        item.aumentar_defensa = random.nextInt(100);
+        return item;
     }
 }

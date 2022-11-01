@@ -14,10 +14,10 @@ import GraphGenerator.Edge;
 import GraphGenerator.GraphGenerator;
 
 public class Mapa {
-    private Integer profundidad; // Cantidad de "pisos" que tiene el mapa (no incluye el nodo inicial ni el nodo del jefe final).
     private NodoInicial nodo_inicial; // Nodo inicial del mapa.
     private Nodo nodo_actual; // Nodo en el que se encuentra el jugador.
     private Integer nNodos;
+    private Boolean isInFinalNode = false;
 
 
     private Random rand;
@@ -31,11 +31,7 @@ public class Mapa {
 
         SortedSet<Edge> edges = GraphGenerator.Generar(profundidad, rand);
 
-        for(Edge edge : edges) {
-            System.out.printf("(%d) -> (%d)\n", edge.x, edge.y);
-        }
 
-        this.profundidad = profundidad;
         this.nodo_actual = this.nodo_inicial = new NodoInicial(0, rand, sc);
 
         ArrayList<Nodo> nodos = new ArrayList<Nodo>();
@@ -199,6 +195,7 @@ public class Mapa {
         } else if( nSiguientesNodos == 1 ) {
             nodo_actual = nodo_actual.getSiguientesNodos().get(0);
         } else {
+            isInFinalNode = true;
             return;
         }
 
@@ -211,5 +208,9 @@ public class Mapa {
 
     public Nodo getNodoActual() {
         return nodo_actual;
+    }
+
+    public Boolean isFinalNode() {
+        return isInFinalNode;
     }
 }

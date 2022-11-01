@@ -27,7 +27,6 @@ public class NodoEvento extends Nodo {
         System.out.println("\t2.- "+alternativa2);
 
         System.out.println("Eleccion: ");
-        Scanner sc = new Scanner(System.in);
         int eleccion = sc.nextInt();
 
         if ( eleccion == 1 ) {

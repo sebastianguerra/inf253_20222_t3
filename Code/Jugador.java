@@ -14,7 +14,11 @@ public class Jugador extends Personaje {
 
     public void verEstado(){
         /* Muestra al usuario los atributos actuales del jugador (nombre, dinero, hp_actual, hp_total, danio y defensa) */
-        // TODO
+        System.out.println("Nombre: " + this.getNombre());
+        System.out.println("Dinero: " + this.getDinero());
+        System.out.printf("HP: %d/%d\n", this.getHp_actual(), this.getHp_total());
+        System.out.println("Danio: " + this.getDanio());
+        System.out.println("Defensa: " + this.getDefensa());
     }
     public void verItems(){
         /* Muestra al usuario los items que a adquirido. */

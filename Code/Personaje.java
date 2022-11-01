@@ -33,16 +33,19 @@ public class Personaje {
                 this.recibirAtaque(enemigo.getDanio());
             else
                 enemigo.recibirAtaque(this.getDanio());
+            
+            turnoEnemigo = !turnoEnemigo;
         }
 
+        if (this.stillAlive())
+            System.out.println(this.nombre + " gana el combate!");
+        else
+            System.out.println(this.nombre + " pierde el combate!");
     }
 
     public void recibirAtaque(int danio) {
         this.hp_actual -= danio - this.defensa;
-    }
-
-    public int getDanio(){
-        return this.danio;
+        System.out.println(this.nombre + " recibio " + (danio-this.defensa) + " de danio. HP actual:" + this.hp_actual);
     }
 
     public boolean stillAlive(){
@@ -54,5 +57,28 @@ public class Personaje {
     }
     public String getNombre() {
         return this.nombre;
+    }
+
+    public Integer getDinero() {
+        return this.dinero;
+    }
+    public void cobrar(Integer dinero) {
+        this.dinero -= dinero;
+    }
+
+    public Integer getHp_actual() {
+        return this.hp_actual;
+    }
+
+    public Integer getHp_total() {
+        return this.hp_total;
+    }
+
+    public Integer getDanio() {
+        return this.danio;
+    }
+
+    public Integer getDefensa() {
+        return this.defensa;
     }
 }
