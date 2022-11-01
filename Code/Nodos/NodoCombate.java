@@ -16,11 +16,12 @@ public class NodoCombate extends Nodo {
         int hp = rand.nextInt(10) + 10;
         int danio = rand.nextInt(5) + 1;
         int defensa = rand.nextInt(5) + 1;
+        int dinero = rand.nextInt(191) + 10;
 
         this.enemigo = new Personaje(
             rand,
             "Enemigo", 
-            0, 
+            dinero, 
             hp, 
             hp, 
             danio, 

@@ -26,6 +26,8 @@ public class Personaje {
 
     public void combate(Personaje enemigo) {
         /* Realiza el combate entre dos personajes. Durante un combate se selecciona un personaje aleatoriamente para comenzar y posteriormente se alternan al atacar. Durante un ataque, el personaje defensor pierde vida equivalente al danio de su oponente menos la defensa del defensor. El combate termina un vez la hp_actual de uno de los personajes sea menor o igual a 0. */
+        System.out.printf("%s ($%d) se enfrenta a %s ($%d)\n\n", this.nombre, this.dinero, enemigo.nombre, enemigo.dinero);
+
         Boolean turnoEnemigo = rand.nextBoolean();
 
         int i = 0;
@@ -39,10 +41,15 @@ public class Personaje {
             i++;
         }
 
-        if (this.stillAlive())
+        if (this.stillAlive()) {
             System.out.println(this.nombre + " gana el combate!");
-        else
+            this.setDinero(this.getDinero() + enemigo.getDinero());
+            System.out.println(this.nombre + " queda con $" + this.getDinero());
+
+        }
+        else {
             System.out.println(this.nombre + " pierde el combate!");
+        }
     }
 
     public void recibirAtaque(int danio) {
@@ -67,6 +74,9 @@ public class Personaje {
     }
     public void cobrar(Integer dinero) {
         this.dinero -= dinero;
+    }
+    public void setDinero(Integer dinero) {
+        this.dinero = dinero;
     }
 
     public Integer getHp_actual() {
