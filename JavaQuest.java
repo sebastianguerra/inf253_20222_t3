@@ -14,14 +14,11 @@ public class JavaQuest {
     public static void main(String[] args) {
         System.out.printf("Seed: %d\n", seed);
 
-        final Mapa mapa = new Mapa(profundidad, rand);
+        final Mapa mapa = new Mapa(profundidad, rand, sc);
         mapa.verMapa();
 
 
-        // Solicita un nombre para el jugador y lo crea.
-        System.out.println("Ingresa un nombre: ");
-        final String nombre = sc.nextLine();
-        final Jugador jugador = new Jugador(nombre, rand);
+        final Jugador jugador = new Jugador(rand);
 
 
         // Inicia el juego.
@@ -29,8 +26,9 @@ public class JavaQuest {
     }
     
     private static void iniciarJuego(Mapa mapa, Jugador jugador) {
+        mapa.getNodoActual().interactuar(jugador);
         while(true) {
-            mapa.avanzar(sc, jugador);
+            mapa.avanzar(jugador);
             mapa.verMapa();
         }
     }

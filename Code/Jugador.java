@@ -7,8 +7,8 @@ import java.util.Random;
 public class Jugador extends Personaje {
     private List<Item> items_aplicados; // Una lista con los items que el personaje a adquirido durante su aventura.
 
-    public Jugador(String nombre, Random rand) {
-        super(rand, nombre, 500, 20, 20, 5, 1);
+    public Jugador(Random rand) {
+        super(rand, null, 500, 20, 20, 5, 1);
         items_aplicados = new ArrayList<Item>();
     }
 

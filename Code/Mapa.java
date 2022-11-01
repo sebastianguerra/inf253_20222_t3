@@ -21,11 +21,14 @@ public class Mapa {
 
 
     private Random rand;
+    private Scanner sc;
 
     private static final HashMap <List<Integer>, String> conexiones = new HashMap<List<Integer>, String>();
 
-    public Mapa(int profundidad, Random random) {
+    public Mapa(int profundidad, Random random, Scanner scanner) {
         this.rand = random;
+        this.sc = scanner;
+
         SortedSet<Edge> edges = GraphGenerator.Generar(profundidad, rand);
 
         for(Edge edge : edges) {
@@ -33,7 +36,7 @@ public class Mapa {
         }
 
         this.profundidad = profundidad;
-        this.nodo_actual = this.nodo_inicial = new NodoInicial(0);
+        this.nodo_actual = this.nodo_inicial = new NodoInicial(0, rand, sc);
 
         ArrayList<Nodo> nodos = new ArrayList<Nodo>();
         nodos.add(this.nodo_inicial);
@@ -43,17 +46,17 @@ public class Mapa {
 
                 int r = rand.nextInt(100);
                 if (r < 30) {
-                    n = new NodoEvento(e.x);
+                    n = new NodoEvento(e.x, rand, sc);
                 } else if (r < 40) {
-                    n = new NodoTienda(e.x);
+                    n = new NodoTienda(e.x, rand, sc);
                 } else {
-                    n = new NodoCombate(e.x, rand);
+                    n = new NodoCombate(e.x, rand, sc);
                 }
 
                 nodos.add(n);
             }
         }
-        nodos.add(new NodoJefeFinal(nodos.size()));
+        nodos.add(new NodoJefeFinal(nodos.size(), rand, sc));
         nNodos = nodos.size();
 
 
@@ -179,9 +182,8 @@ public class Mapa {
         
     }
 
-    public void avanzar(Scanner sc, Jugador jugador) {
+    public void avanzar(Jugador jugador) {
         /* Le muestra al usuario los nodos a los que puede avanzar, le pide seleccionar uno y hace al jugador interactuar con ese nodo. */
-        // TODO
 
         int nSiguientesNodos = nodo_actual.getSiguientesNodos().size();
         if (nSiguientesNodos > 1) {
@@ -205,5 +207,9 @@ public class Mapa {
         
 
 
+    }
+
+    public Nodo getNodoActual() {
+        return nodo_actual;
     }
 }

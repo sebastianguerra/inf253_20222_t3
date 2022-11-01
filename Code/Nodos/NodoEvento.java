@@ -1,5 +1,6 @@
 package Code.Nodos;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import Code.Item;
@@ -12,8 +13,8 @@ public class NodoEvento extends Nodo {
     private Item resultado1; // Item que el jugador puede obtener si toma la primera opcion.
     private Item resultado2; // Item que el jugador puede obtener si toma la segunda opcion.
 
-    public NodoEvento(int id) {
-        super(id);
+    public NodoEvento(int id, Random random, Scanner scanner) {
+        super(id, random, scanner);
     }
 
     public void interactuar(Jugador jugador){

@@ -1,6 +1,8 @@
 package Code.Nodos;
 
 import java.util.List;
+import java.util.Random;
+import java.util.Scanner;
 
 import Code.Item;
 import Code.Jugador;
@@ -8,8 +10,8 @@ import Code.Jugador;
 public class NodoTienda extends Nodo {
     private List<Item> inventario; // Lista de items disponibles para comprar.
 
-    public NodoTienda(int id) {
-        super(id);
+    public NodoTienda(int id, Random random, Scanner scanner) {
+        super(id, random, scanner);
     }
 
     public void comprar(Integer pos){
