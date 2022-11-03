@@ -7,7 +7,7 @@
 # define a variable for a parameter. When you run make, you could use:
 # make run FILE="Algo.csv" para sobre escribir el valor de FILE. 
 
-JFLAGS = -g
+JFLAGS = -g -Xlint:all
 JC = javac
 JVM= java 
 FILE=
